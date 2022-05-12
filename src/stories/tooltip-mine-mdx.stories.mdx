@@ -1,0 +1,47 @@
+import { CommonModule } from '@angular/common';
+import { moduleMetadata } from '@storybook/angular';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import { TkTooltipDirective } from '../../src/app/tooltip.directive'
+
+<Meta title='TooltipMDX'
+  argTypes={{
+    trigger: {
+      control: {
+        type: 'select',
+        options: ['click', 'mouseenter']
+      }
+    }
+  }}
+  component={TkTooltipDirective}
+/>
+
+<!-- old: delete me: const Template = (args) => ({ props: args }); -->
+
+# George Tk Bah-Boom!
+
+Some **markdown** description, or whatever you want.
+
+export const Template = (args) => ({
+  props: args,
+  component: TkTooltipDirective,
+  template: `<button tk-tooltip [contents]="contents" [trigger]="trigger"> I'm an informative button</button>`
+})
+
+<Canvas>
+  <Story name='button' args={{ contents: 'I am the note', trigger: 'mouseenter' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Clicking a button
+
+<Canvas>
+  <Story name='click' args={{ contents: 'I get clicked', trigger: 'click' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Configuration
+
+<ArgsTable story="click" />

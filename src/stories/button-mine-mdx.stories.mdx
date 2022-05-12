@@ -1,0 +1,17 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import Button from './button.component';
+
+<Meta title="MyButtonMDX" component={Button} argTypes={{ backgroundColor: { control: 'color' } }} />
+
+export const Template = (args) => <Button {...args} />
+
+# Button component
+
+## Basic
+<Canvas>
+  <Story name="Basic" args={{ label: 'hello', backgroundColor: '#ff0' }}>
+  {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic" />
